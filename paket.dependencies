@@ -1,0 +1,11 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+
+nuget Expecto.FsCheck
+nuget FSharp.Core
+nuget EasyNetQ
+nuget RabbitMQ.Client < 5
+nuget Marten
+
+github logary/logary src/Logary.Facade/Facade.fs

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FSharpLintSettings>
+  <Analysers>
+    <NameConventions>
+      <Rules>
+        <InterfaceNames>
+          <Enabled>false</Enabled>
+          <Suffix></Suffix>
+        </InterfaceNames>
+      </Rules>
+    </NameConventions>
+  </Analysers>
+</FSharpLintSettings>

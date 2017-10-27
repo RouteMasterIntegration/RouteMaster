@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Setup.fs" />
+    <Compile Include="Bus.fs" />
+    <Compile Include="Store.fs" />
+    <Compile Include="Expected.fs" />
+    <Compile Include="Process.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\RouteMaster.fsproj" />
+    <ProjectReference Include="..\MemoryBus\RouteMaster.Transport.Memory.fsproj" />
+    <ProjectReference Include="..\MemoryStores\RouteMaster.State.Memory.fsproj" />
+    <ProjectReference Include="..\EasyNetQ\RouteMaster.Transport.EasyNetQ.fsproj" />
+    <ProjectReference Include="..\PostgreSQL\RouteMaster.State.PostgreSQL.fsproj" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>
