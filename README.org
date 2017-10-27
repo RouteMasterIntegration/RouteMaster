@@ -127,7 +127,7 @@ But wait! That function takes four arguments - what are the other three?
 
 =tll= ("time to live") is a simple =TimeSpan=. To avoid issues with stale messages and unbounded backlogs, RouteMaster requires that all messages sent and all expected responses have a time limit. For a simple "pipeline" step like this (sends one message, expects one response) the time to live of the message and how long we'll wait for the expected result are defined to be equal.
 
-We cannot define the =timeout= and =expectTemplate= steps within the function, as the steps to continue a workflow must be "registered" before being used. So for now we'll leave them as function parameters to be passed in later.
+We cannot define the =timeout= and =receivedTemplate= steps within the function, as the steps to continue a workflow must be "registered" before being used. So for now we'll leave them as function parameters to be passed in later.
 
 Next, we'll be receiving a =Template= message; we need a =Step= which knows how to extract the correlation ID from the message, and what logic to invoke when we receive one we've been expecting.
 
