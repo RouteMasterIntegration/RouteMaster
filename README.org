@@ -8,7 +8,11 @@ Much of the thinking behind RouteMaster is inspired by the book [[http://www.ent
 
 - the most appropriate for integration style for your applications is [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/IntegrationStylesIntro.html][messaging]]
 - your messaging will be [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html][Publish - Subscribe]] (one to many) routed by data type (making all channels [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/DatatypeChannel.html][DataType Channels]]), optionally filtered by topic
-- the flow of information between your applications is sufficiently complex that you require [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html][Content Based Routers]], [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html][Dynamic Routers]], or full blown stateful [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html][Process Managers]]. 
+- the flow of information between your applications is sufficiently complex that you require [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html][Content Based Routers]], [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html][Dynamic Routers]], or full blown stateful [[http://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html][Process Managers]].
+
+**RouteMaster is currently at an Alpha state and is not ready for production usage**
+
+Would you like to see faster progress on RouteMaster? Contact us@mavnn.co.uk to discuss sponsorship.
 
 ** What does it look like?
 
@@ -284,4 +288,9 @@ RouteMaster.startRoute sendEmailRoute nextPerson
 
 So there you have it - a simple (but stateful) pipeline workflow in =RouteMaster=. Things get more interesting from here!
 
+** What's next?
 
+- C# friendly API
+- Documentation
+- Nicer abstractions over common patterns such as fork and join
+- Support for more State and Transport backends
