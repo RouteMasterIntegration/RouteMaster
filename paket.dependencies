@@ -7,5 +7,6 @@ nuget FSharp.Core
 nuget EasyNetQ
 nuget RabbitMQ.Client < 5
 nuget Marten
+clitool Microsoft.DotNet.Watcher.Tools
 
 github logary/logary src/Logary.Facade/Facade.fs

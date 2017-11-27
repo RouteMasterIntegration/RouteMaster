@@ -4,7 +4,9 @@ open System
 open RouteMaster.Types
 open RouteMaster.Logging
 open RouteMaster.Logging.Message
-let internal logger = Log.create "RouteMaster.Process" 
+
+let internal logger = Log.create "RouteMaster.Process"
+
 module Send =
     let send timeToLive message = Send(message, timeToLive) :> Send
 

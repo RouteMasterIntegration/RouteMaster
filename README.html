@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-11-21 Tue 19:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Michael Newton" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="outline-container-orgb3d8d95" class="outline-2">
+<h2 id="orgb3d8d95"><span class="section-number-2">1</span> RouteMaster</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9679fde" class="outline-3">
+<h3 id="org9679fde"><span class="section-number-3">1.1</span> What is it?</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+RouteMaster is a .NET library for writing stateful workflows on top of a message bus. It exists to make the implementation of long running business processes easy in event driven systems.
+</p>
+
+<p>
+Much of the thinking behind RouteMaster is inspired by the book <a href="http://www.enterpriseintegrationpatterns.com">Enterprise Integration Patterns</a>, and it works best when:
+</p>
+
+<ul class="org-ul">
+<li>the most appropriate for integration style for your applications is <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/IntegrationStylesIntro.html">messaging</a></li>
+<li>your messaging will be <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html">Publish - Subscribe</a> (one to many) routed by data type (making all channels <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/DatatypeChannel.html">DataType Channels</a>), optionally filtered by topic</li>
+<li>the flow of information between your applications is sufficiently complex that you require <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html">Content Based Routers</a>, <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html">Dynamic Routers</a>, or full blown stateful <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html">Process Managers</a>.</li>
+</ul>
+
+<p>
+<b><b>RouteMaster is currently at an Alpha state and is not ready for production usage</b></b>
+</p>
+
+<p>
+Would you like to see faster progress on RouteMaster? Contact us@mavnn.co.uk to discuss sponsorship.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45d6a30" class="outline-3">
+<h3 id="org45d6a30"><span class="section-number-3">1.2</span> What does it look like?</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Imagine a workflow for sending emails. It is triggered with an email address to send to and a template name to use.
+</p>
+
+
+<div class="figure">
+<p><object type="image/svg+xml" data="email_sender.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<p>
+There are microservices already written to perform each of these individual functions (there is a template store, a user info store, etc.).
+</p>
+
+<p>
+We use the following .NET types as the message types available in our overall system; these are effectively the contract by which we communicate with our services. Here they are defined as F# records to capture the fact that they are <a href="https://en.wikipedia.org/wiki/Immutable_object">immutable</a> <a href="https://stackoverflow.com/questions/4581579/value-objects-in-ddd-why-immutable">value types</a>, without needing to write additional equality checks:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">For the template store service</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Request</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">GetTemplate</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      templateId : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Response</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">Template</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      template : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">For user info store</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Request, keyed on email address</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">LookupUserInfo</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      address : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Response</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">UserInfo</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      name : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">HTML template renderer</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Request with template and "user info"</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">RenderEmail</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      template : <span style="color: #ba2f59; font-weight: bold;">string</span>
+      name : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Response</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">EmailRendered</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      content : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Email sending service</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Request</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">SendEmail</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      address : <span style="color: #ba2f59; font-weight: bold;">string</span>
+      content : <span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Response</span>
+<span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">EmailSent</span> =
+    <span style="color: #3a81c3;">{</span> cid : <span style="color: #ba2f59; font-weight: bold;">Guid</span>
+      success : <span style="color: #ba2f59; font-weight: bold;">bool</span> <span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+
+<p>
+All of these types contain a <code>cid</code> field - a convention in our system for storing a <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html">Correlation Identifier</a>. All of the applications within our system (or at least, all of the <a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html">Message Translators</a> exposing these messages) know to publish response messages including the same correlation identifier as received in the triggering message.
+</p>
+
+<p>
+To run through this work flow, we'll need a stateful process manager; we'll need to retrieve the current template and user info, combine the two with the rendering service and then use the result (and our initial email address) to actually send our email.
+</p>
+
+<p>
+Our state will need to look something like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">SendEmailProcessState</span> =
+    <span style="color: #3a81c3;">{</span> ToAddress : <span style="color: #ba2f59; font-weight: bold;">string</span>
+      Template : <span style="color: #ba2f59; font-weight: bold;">string option</span>
+      Content : <span style="color: #ba2f59; font-weight: bold;">string option</span>
+      UserInfo : <span style="color: #ba2f59; font-weight: bold;">string option</span> <span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+
+<p>
+We'll always have the <code>ToAddress</code>, which is the information given to start the process off, but all of the other information will be filled in as we go through.
+</p>
+
+<p>
+Now we need to define each step in our workflow. Firstly, let's create a function which takes our initial state and return an <code>Async&lt;StepResult&gt;</code> which:
+</p>
+
+<ul class="org-ul">
+<li>Records the fact that we expect a <code>Template</code> message soon with a particular correlation ID</li>
+<li>Requests that RouteMaster sends a <code>GetTemplate</code> message with the same correlation ID</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">startSendEmailRoute</span> <span style="color: #715ab1;">ttl</span> <span style="color: #715ab1;">timeout</span> <span style="color: #715ab1;">receivedTemplate</span> <span style="color: #715ab1;">initialState</span> =
+    <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #3a81c3;">{</span>
+        <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">getTemplate</span> =
+            <span style="color: #6c3163;">{</span> cid = Guid.NewGuid<span style="color: #2d9574;">()</span>
+              templateId = <span style="color: #2d9574;">"My template"</span> <span style="color: #6c3163;">}</span>
+        <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">cid</span> = getTemplate.cid.ToString<span style="color: #6c3163;">()</span> <span style="color: #87cefa;">|&gt;</span> CorrelationId
+        <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.pipeline ttl timeout getTemplate cid receivedTemplate
+    <span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+
+<p>
+But wait! That function takes four arguments - what are the other three?
+</p>
+
+<p>
+<code>tll</code> ("time to live") is a simple <code>TimeSpan</code>. To avoid issues with stale messages and unbounded backlogs, RouteMaster requires that all messages sent and all expected responses have a time limit. For a simple "pipeline" step like this (sends one message, expects one response) the time to live of the message and how long we'll wait for the expected result are defined to be equal.
+</p>
+
+<p>
+We cannot define the <code>timeout</code> and <code>receivedTemplate</code> steps within the function, as the steps to continue a workflow must be "registered" before being used. So for now we'll leave them as function parameters to be passed in later.
+</p>
+
+<p>
+Next, we'll be receiving a <code>Template</code> message; we need a <code>Step</code> which knows how to extract the correlation ID from the message, and what logic to invoke when we receive one we've been expecting.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">receivedTemplate</span> <span style="color: #715ab1;">timeout</span> <span style="color: #715ab1;">receivedUserInfo</span> =
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">extract</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">t</span> : <span style="color: #ba2f59; font-weight: bold;">Template</span><span style="color: #3a81c3;">)</span> =
+        t.cid.ToString<span style="color: #3a81c3;">()</span>
+        <span style="color: #87cefa;">|&gt;</span> CorrelationId
+        <span style="color: #87cefa;">|&gt;</span> Some
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">invoke</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">access</span> : <span style="color: #ba2f59; font-weight: bold;">StateAccess</span><span style="color: #655370; background-color: #fbf8ef;">&lt;_&gt;</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">template</span> : <span style="color: #ba2f59; font-weight: bold;">Template</span><span style="color: #3a81c3;">)</span> =
+        <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #3a81c3;">{</span>
+            <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">state</span> = access.Update <span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">fun</span> <span style="color: #715ab1;">state</span> -&gt; <span style="color: #2d9574;">{</span> state <span style="color: #3a81c3; font-weight: bold;">with</span> Template = Some template.template <span style="color: #2d9574;">}</span><span style="color: #6c3163;">)</span>
+            <span style="color: #3a81c3; font-weight: bold;">match</span> state <span style="color: #3a81c3; font-weight: bold;">with</span>
+            <span style="color: #87cefa;">|</span> Some <span style="color: #6c3163;">{</span> ToAddress = a <span style="color: #6c3163;">}</span> -&gt;
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">lookupUserInfo</span> =
+                    <span style="color: #6c3163;">{</span> cid = Guid.NewGuid<span style="color: #2d9574;">()</span>
+                      address = a <span style="color: #6c3163;">}</span>
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">cid</span> = lookupUserInfo.cid.ToString<span style="color: #6c3163;">()</span> <span style="color: #87cefa;">|&gt;</span> CorrelationId
+                <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.pipeline ttl timeout lookupUserInfo cid receivedUserInfo
+            <span style="color: #87cefa;">|</span> _ -&gt;
+                printfn <span style="color: #2d9574;">"Failed to retrieve state!"</span>
+                <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.cancel
+        <span style="color: #3a81c3;">}</span>
+    Step.create
+        <span style="color: #3a81c3;">(</span>StepName <span style="color: #2d9574;">"template received"</span><span style="color: #3a81c3;">)</span>
+        extract
+        invoke
+</pre>
+</div>
+
+<p>
+We'll need a more steps to cover each of the stages of the process, and finally we'll add a timeout step which will receive a <code>TimeoutMessage</code> if any step along the way times out. Let's put those together:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">receivedUserInfo</span> <span style="color: #715ab1;">receivedEmailRendered</span> <span style="color: #715ab1;">timeout</span> =
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">extract</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">u</span> : <span style="color: #ba2f59; font-weight: bold;">UserInfo</span><span style="color: #3a81c3;">)</span> =
+        u.cid.ToString<span style="color: #3a81c3;">()</span>
+        <span style="color: #87cefa;">|&gt;</span> CorrelationId
+        <span style="color: #87cefa;">|&gt;</span> Some
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">invoke</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">access</span> : <span style="color: #ba2f59; font-weight: bold;">StateAccess</span><span style="color: #655370; background-color: #fbf8ef;">&lt;_&gt;</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">u</span> : <span style="color: #ba2f59; font-weight: bold;">UserInfo</span><span style="color: #3a81c3;">)</span> =
+        <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #3a81c3;">{</span>
+            <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">state</span> = access.Update id
+            <span style="color: #3a81c3; font-weight: bold;">match</span> state <span style="color: #3a81c3; font-weight: bold;">with</span>
+            <span style="color: #87cefa;">|</span> Some <span style="color: #6c3163;">{</span> Template = Some t <span style="color: #6c3163;">}</span> -&gt;
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">renderEmail</span> =
+                    <span style="color: #6c3163;">{</span> cid = Guid.NewGuid<span style="color: #2d9574;">()</span>
+                      template = t
+                      name = u.name <span style="color: #6c3163;">}</span>
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">cid</span> = renderEmail.cid.ToString<span style="color: #6c3163;">()</span> <span style="color: #87cefa;">|&gt;</span> CorrelationId
+                <span style="color: #3a81c3; font-weight: bold;">return</span>
+                    StepResult.pipeline
+                        ttl timeout renderEmail cid receivedEmailRendered
+            <span style="color: #87cefa;">|</span> _ -&gt;
+                printfn <span style="color: #2d9574;">"Failed to retrieve state!"</span>
+                <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.cancel
+        <span style="color: #3a81c3;">}</span>
+    Step.create
+        <span style="color: #3a81c3;">(</span>StepName <span style="color: #2d9574;">"user info received"</span><span style="color: #3a81c3;">)</span>
+        extract
+        invoke
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">receivedEmailRendered</span> <span style="color: #715ab1;">receivedEmailSent</span> <span style="color: #715ab1;">timeout</span> =
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">extract</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">er</span> : <span style="color: #ba2f59; font-weight: bold;">EmailRendered</span><span style="color: #3a81c3;">)</span> =
+        er.cid.ToString<span style="color: #3a81c3;">()</span>
+        <span style="color: #87cefa;">|&gt;</span> CorrelationId
+        <span style="color: #87cefa;">|&gt;</span> Some
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">invoke</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">access</span> : <span style="color: #ba2f59; font-weight: bold;">StateAccess</span><span style="color: #655370; background-color: #fbf8ef;">&lt;_&gt;</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">er</span> : <span style="color: #ba2f59; font-weight: bold;">EmailRendered</span><span style="color: #3a81c3;">)</span> =
+        <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #3a81c3;">{</span>
+            <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">state</span> = access.Update id
+            <span style="color: #3a81c3; font-weight: bold;">match</span> state <span style="color: #3a81c3; font-weight: bold;">with</span>
+            <span style="color: #87cefa;">|</span> Some <span style="color: #6c3163;">{</span> ToAddress = a <span style="color: #6c3163;">}</span> -&gt;
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">sendEmail</span> =
+                    <span style="color: #6c3163;">{</span> cid = Guid.NewGuid<span style="color: #2d9574;">()</span>
+                      address = a
+                      content = er.content <span style="color: #6c3163;">}</span>
+                <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">cid</span> = sendEmail.cid.ToString<span style="color: #6c3163;">()</span> <span style="color: #87cefa;">|&gt;</span> CorrelationId
+                <span style="color: #3a81c3; font-weight: bold;">return</span>
+                    StepResult.pipeline
+                        ttl timeout sendEmail cid receivedEmailSent
+            <span style="color: #87cefa;">|</span> _ -&gt;
+                printfn <span style="color: #2d9574;">"Failed to retrieve state!"</span>
+                <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.cancel
+        <span style="color: #3a81c3;">}</span>
+    Step.create
+        <span style="color: #3a81c3;">(</span>StepName <span style="color: #2d9574;">"an email was rendered"</span><span style="color: #3a81c3;">)</span>
+        extract
+        invoke
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">receivedEmailSent</span> =
+    Step.create
+        <span style="color: #3a81c3;">(</span>StepName <span style="color: #2d9574;">"anEmailWasSent"</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">fun</span> <span style="color: #6c3163;">(</span><span style="color: #715ab1;">es</span> : <span style="color: #ba2f59; font-weight: bold;">EmailSent</span><span style="color: #6c3163;">)</span> -&gt;
+            es.cid.ToString<span style="color: #6c3163;">()</span>
+            <span style="color: #87cefa;">|&gt;</span> CorrelationId
+            <span style="color: #87cefa;">|&gt;</span> Some<span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">fun</span> <span style="color: #715ab1;">access</span> <span style="color: #6c3163;">(</span><span style="color: #715ab1;">_</span> : <span style="color: #ba2f59; font-weight: bold;">EmailSent</span><span style="color: #6c3163;">)</span> -&gt; <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #6c3163;">{</span>
+            printfn <span style="color: #2d9574;">"Yay! Record I'm done somewhere"</span>
+            printfn <span style="color: #2d9574;">"The console sounds a great place!"</span>
+            <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.cancel
+        <span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">receivedTimeout</span> =
+    Step.createTimeout <span style="color: #3a81c3;">(</span>StepName <span style="color: #2d9574;">"timeout"</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">fun</span> <span style="color: #715ab1;">_</span> <span style="color: #715ab1;">_</span> -&gt; <span style="color: #3a81c3; font-weight: bold;">async</span> <span style="color: #6c3163;">{</span>
+        printfn <span style="color: #2d9574;">"I should probably tell someone this happened."</span>
+        printfn <span style="color: #2d9574;">"But I'm only demo code."</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> StepResult.cancel
+    <span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+<p>
+Now we have all of the steps required to build our "Route". To actually connect everything up (persistent storage, connect to the message bus, etc) we need to activate the route.
+</p>
+
+<p>
+Activation is the process by which we register all of these lovely pieces of logic with the underlying infrastructure. And to help us remember to do so, our <code>StepResult</code> output from each step requires that any subsequent steps are registered.
+</p>
+
+<p>
+How does this all work? Well, we call the <code>RouteMaster.activate</code> function with two arguments:
+</p>
+
+<ul class="org-ul">
+<li>a configuration representing the underlying infrastructure</li>
+<li>a builder function which will be called with a <code>RouteBuilder</code></li>
+</ul>
+
+<p>
+Out of all this, we need to return a function that knows how to take the initial state of the this route and kick off the first step. Luckily we already have that above - the = startSendEmailRoute= function.
+</p>
+
+<p>
+So let's get on with it; because earlier steps in the route require later steps to already be registered before they can be registered themselves, we end up building up the route in reverse order:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">default time to live</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">ttl</span> = TimeSpan.FromMinutes <span style="color: #4e3163;">5</span>.
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #6c3163; font-weight: bold;">buildFunc</span> <span style="color: #715ab1;">builder</span> =
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">timeout</span> =
+        receivedTimeout
+        <span style="color: #87cefa;">|&gt;</span> Step.register builder
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">registeredEmailSent</span> =
+        Step.register builder receivedEmailSent
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">registeredEmailRendered</span> =
+        receivedEmailRendered registeredEmailSent timeout
+        <span style="color: #87cefa;">|&gt;</span> Step.register builder
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">registeredUserInfo</span> =
+        receivedUserInfo registeredEmailRendered timeout
+        <span style="color: #87cefa;">|&gt;</span> Step.register builder
+    <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">registeredTemplate</span> =
+        receivedTemplate registeredUserInfo timeout
+        <span style="color: #87cefa;">|&gt;</span> Step.register builder
+    <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">fun</span> <span style="color: #715ab1;">initial</span> <span style="color: #715ab1;">state</span> -&gt; startSendEmailRoute ttl timeout registeredTemplate<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">use</span> <span style="color: #715ab1;">sendEmailRoute</span> =
+    RouteMaster.activate config buildFunc
+</pre>
+</div>
+
+<p>
+After running this code, <code>sendEmailRoute</code> is now active and will start receiving messages from the message bus. Because expected messages are shared between RouteMaster nodes, it will start processing messages which have been expected by any node on the same infrastructure with matching route and step names (route name is part of the config object).
+</p>
+
+<p>
+To initiate a new run of the route, we simply call <code>startRoute</code> with a initial starter state.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fsharp"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">nextPerson</span> =
+    <span style="color: #3a81c3;">{</span> ToAddress = <span style="color: #2d9574;">"bob@example.com"</span>
+      Template = None
+      Content = None
+      UserInfo = None <span style="color: #3a81c3;">}</span>
+RouteMaster.startRoute sendEmailRoute nextPerson
+</pre>
+</div>
+
+<p>
+So there you have it - a simple (but stateful) pipeline workflow in <code>RouteMaster</code>. Things get more interesting from here!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34dadcc" class="outline-3">
+<h3 id="org34dadcc"><span class="section-number-3">1.3</span> What's next?</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>C# friendly API</li>
+<li>Documentation</li>
+<li>Nicer abstractions over common patterns such as fork and join</li>
+<li>Support for more State and Transport backends</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Michael Newton</p>
+<p class="date">Created: 2017-11-21 Tue 19:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

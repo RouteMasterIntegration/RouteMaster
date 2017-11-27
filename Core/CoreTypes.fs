@@ -1,11 +1,13 @@
-module RouteMaster.Types
+namespace RouteMaster.Types
 
 open System
 open System.Collections.Concurrent
 open RouteMaster.Logging
 open RouteMaster.Logging.Message
 
-let internal logger = Log.create "RouteMaster.Types"
+[<AutoOpen>]
+module internal Logging =
+    let internal logger = Log.create "RouteMaster.Types"
 
 type SubscriptionId = SubscriptionId of string
 type StepName = StepName of string
