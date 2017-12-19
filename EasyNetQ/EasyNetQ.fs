@@ -4,7 +4,7 @@ open System
 open EasyNetQ
 open EasyNetQ.Producer
 open EasyNetQ.FluentConfiguration
-open RouteMaster.Types
+open RouteMaster
 
 let private publish<'a when 'a : not struct> (bus : IBus) (dms : IMessageDeliveryModeStrategy) (ped : Producer.IPublishExchangeDeclareStrategy) message (expire : TimeSpan) topic =
     async {

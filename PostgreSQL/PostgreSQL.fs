@@ -4,7 +4,7 @@ open System
 open System.Linq
 open Marten
 open Marten.Services
-open RouteMaster.Types
+open RouteMaster
 
 let makeId (CorrelationId cid)
            (StepName sn)

@@ -2,7 +2,7 @@ module RouteMaster.Tests.Expected
 
 open System
 open System.Linq
-open RouteMaster.Types
+open RouteMaster
 open RouteMaster.Process
 open RouteMaster.State.PostgreSQL
 open Expecto

@@ -1,7 +1,7 @@
 module RouteMaster.State.Memory
 
 open System
-open RouteMaster.Types
+open RouteMaster
 
 type private StoreMsg =
     | Create of ProcessId * obj

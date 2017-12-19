@@ -8,7 +8,9 @@
       <Paket>True</Paket>
       <Link>Logging/Facade.fs</Link>
     </Compile>
-    <Compile Include="CoreTypes.fs" />
+    <Compile Include="DomainModel.fs" />
+    <Compile Include="TimeoutManager.fs" />
+    <Compile Include="RouteMaster.fs" />
     <Compile Include="Process.fs" />
     <Compile Include="Extensions.fs" />
   </ItemGroup>

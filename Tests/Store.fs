@@ -1,7 +1,7 @@
 module RouteMaster.Tests.Store
 
 open System
-open RouteMaster.Types
+open RouteMaster
 open Expecto
 
 type T1 = T1 of string

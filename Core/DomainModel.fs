@@ -1,27 +1,29 @@
-namespace RouteMaster.Types
+namespace RouteMaster
 
 open System
 open System.Collections.Concurrent
 open RouteMaster.Logging
 open RouteMaster.Logging.Message
 
-[<AutoOpen>]
-module internal Logging =
-    let internal logger = Log.create "RouteMaster.Types"
-
 type SubscriptionId = SubscriptionId of string
+
+type RouteName = RouteName of string
+
 type StepName = StepName of string
     with
         member x.Value =
             match x with StepName s -> s
+
 type ProcessId = ProcessId of string
     with
         member x.Value =
             match x with ProcessId p -> p
+
 type CorrelationId = CorrelationId of string
     with
         member x.Value =
             match x with CorrelationId c -> c
+
 type Topic = Topic of string
 
 type MessageBus =
@@ -130,7 +132,10 @@ type Config =
     { Bus : MessageBus
       StateStore : StateStore
       ExpectedStore : ExpectedStore
-      RouteName : SubscriptionId }
+      RouteName : RouteName }
+    member x.RouteTopic =
+        match x.RouteName with
+        | RouteName rn -> Topic rn
 
 type RouteBuilder internal (config : Config) =
     member internal __.Config = config
@@ -145,47 +150,3 @@ type Step<'input, 'state when 'input : not struct and 'state : not struct> =
       ExtractCorrelationId : 'input -> CorrelationId option
       Topic : Topic option
       Name : StepName }
-
-type private TimeoutManager (bus : MessageBus, expectedStore : ExpectedStore, stateStore : StateStore) =
-    let rand = Random()
-    let active = ref true
-    let publishTimeout (t : TimedOut) =
-        async {
-            let cid = Guid.NewGuid().ToString() |> CorrelationId
-            let toStore =
-                { CorrelationId = cid
-                  NextStepName = t.TimeoutStepName
-                  TimeoutStepName = StepName "RouteMaster Default Timeout"
-                  TimeToLive = TimeSpan.FromDays 7.
-                  ProcessId = t.ProcessId }
-            let toSend =
-                { TimeoutId = cid
-                  ExpectedStep = t.ExpectedStepName }
-            do!
-                eventX "Expected response for {processId} has timed out: {timedOut}"
-                >> setField "timedOut" t
-                >> setField "processId" t.ProcessId
-                |> logger.infoWithBP
-
-            do! expectedStore.Add toStore
-            do! bus.Publish toSend (TimeSpan.FromDays 7.)
-        }
-    do
-        async {
-            do! Async.Sleep (rand.Next(800, 1200))
-            while !active do
-                do! expectedStore.TimedOut publishTimeout
-                do! Async.Sleep (rand.Next(800, 1200))
-        } |> Async.Start
-    interface IDisposable with
-        member x.Dispose() =
-            active := false
-
-type RouteMaster<'state when 'state : not struct> internal (g, s) =
-    let t = new TimeoutManager(g.Bus, g.ExpectedStore, g.StateStore)
-    member x.ActiveConfig : Config = g
-    member x.Starter : 'state -> Async<StepResult<'state>> = s
-    interface IDisposable with
-        member x.Dispose() =
-            (t :> IDisposable).Dispose()
-

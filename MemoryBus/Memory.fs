@@ -1,7 +1,7 @@
 module RouteMaster.Transport.Memory
 
 open System
-open RouteMaster.Types
+open RouteMaster
 
 type private Subscriber =
     abstract Action : obj -> Async<unit>

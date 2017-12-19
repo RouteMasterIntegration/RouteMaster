@@ -1,7 +1,7 @@
 module RouteMaster.Process
 
 open System
-open RouteMaster.Types
+open RouteMaster
 open RouteMaster.Logging
 open RouteMaster.Logging.Message
 
@@ -105,7 +105,7 @@ This can cause unpredictable errors; please make sure all registrations are comp
             match step.Name with
             | StepName name ->
                 match routeBuilder.Config.RouteName with
-                | SubscriptionId subId ->
+                | RouteName subId ->
                     StepName (subId + "::" + name)
         let callback input =
             async {
@@ -145,9 +145,9 @@ This can cause unpredictable errors; please make sure all registrations are comp
                     return ()
             }
         let stepSubId =
-            let (SubscriptionId garageName) = config.RouteName
+            let (RouteName routeName) = config.RouteName
             let (StepName stepName) = step.Name
-            SubscriptionId (garageName + "::" + stepName)
+            SubscriptionId (routeName + "::" + stepName)
         eventX "Registering step {stepName} with {stepSubId}"
         >> setField "stepName" fullName
         >> setField "stepSubId" stepSubId
@@ -157,7 +157,12 @@ This can cause unpredictable errors; please make sure all registrations are comp
         | Some t ->
             config.Bus.TopicSubscribe stepSubId t callback
         | None ->
-            config.Bus.Subscribe stepSubId callback
+            // Timeouts always subscribe with a topic based
+            // on the route name
+            if typeof<'input> = typeof<TimeoutMessage> then
+                config.Bus.TopicSubscribe stepSubId config.RouteTopic callback
+            else
+                config.Bus.Subscribe stepSubId callback
         RegisteredStep(fullName)
 
 module RouteMaster =

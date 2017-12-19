@@ -1,7 +1,7 @@
 module RouteMaster.Tests.Process
 
 open System
-open RouteMaster.Types
+open RouteMaster
 open RouteMaster.Process
 open Expecto
 
@@ -59,7 +59,7 @@ let emailSender (sendEmail : SendEmail) =
     { EmailSent.cid = sendEmail.cid }
 
 let delayedSender (sendEmail : DelayedSendEmail) =
-    Async.Sleep 5000 |> Async.RunSynchronously
+    Async.Sleep 10000 |> Async.RunSynchronously
     { EmailSent.cid = sendEmail.cid }
 
 let inline extract message =
@@ -89,7 +89,7 @@ let createConfig subId =
 
 let routeTest name testBuildFunc initialState expects =
     testCaseAsync name <| async {
-        let config = createConfig (SubscriptionId name)
+        let config = createConfig (RouteName name)
         let latch = Latch.make()
         let buildFunc = testBuildFunc latch
         use routeMaster =
@@ -273,15 +273,13 @@ let workflowTests =
 
         testCaseAsync "Things timeout" <| async {
             // setup
-            let config = createConfig (SubscriptionId "Things timeout")
-            let timedOut = ref false
+            let config = createConfig (RouteName "Things timeout")
             let complete = Latch.make ()
 
             let shouldFireStep builder =
                 Step.createTimeout
                     (StepName "should fire")
-                    (fun _ tm -> async { timedOut := true
-                                         Latch.complete complete ()
+                    (fun _ tm -> async { Latch.complete complete true
                                          return StepResult.cancel })
                 |> Step.register builder
 
@@ -312,22 +310,22 @@ let workflowTests =
             do! RouteMaster.startRoute routeMaster ()
 
             // wait for the timeout manager...
-            do! Latch.wait complete
+            let! result = Latch.wait complete
 
-            Expect.isTrue (!timedOut) "Timeout manager should have fired a timeout message"
+            Expect.isTrue result "Timeout manager should have fired a timeout message"
         }
 
         testCaseAsync "The correct timeout fires" <| async {
             // setup
-            let config = createConfig (SubscriptionId "The correct timeout fires")
-            let shouldHaveFired = ref false
-            let shouldNotHaveFired = ref false
+            let config = createConfig (RouteName "The correct timeout fires")
+            let mutable shouldHaveFired = false
+            let mutable shouldNotHaveFired = false
             let complete = Latch.make ()
 
             let shouldFireStep builder =
                 Step.createTimeout
                     (StepName "should fire")
-                    (fun _ tm -> async { shouldHaveFired := true
+                    (fun _ tm -> async { shouldHaveFired <- true
                                          Latch.complete complete ()
                                          return StepResult.cancel })
                 |> Step.register builder
@@ -335,7 +333,7 @@ let workflowTests =
             let shouldNotFireStep builder =
                 Step.createTimeout
                     (StepName "should not fire")
-                    (fun _ tm -> async { shouldNotHaveFired := true
+                    (fun _ tm -> async { shouldNotHaveFired <- true
                                          Latch.complete complete ()
                                          return StepResult.cancel })
                 |> Step.register builder
@@ -370,12 +368,12 @@ let workflowTests =
             // wait for the timeout manager...
             do! Latch.wait complete
 
-            Expect.isTrue (!shouldHaveFired) "Timeout manager should have fired a timeout message"
-            Expect.isFalse (!shouldNotHaveFired) "Shouldn't have fired"
+            Expect.isTrue shouldHaveFired "Timeout manager should have fired a timeout message"
+            Expect.isFalse shouldNotHaveFired "Shouldn't have fired"
         }
 
         testCaseAsync "Can fork and join" <| async {
-            let config = createConfig (SubscriptionId "Can fork and Join")
+            let config = createConfig (RouteName "Can fork and Join")
             let latch = Latch.make()
 
             let sendRenderMessage state timeout emailRendered =

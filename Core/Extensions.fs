@@ -3,8 +3,8 @@ namespace RouteMaster.Extensions
 open System
 open System.Runtime.CompilerServices
 open System.Threading.Tasks
+open RouteMaster
 open RouteMaster.Process
-open RouteMaster.Types
 
 type Starter<'state> =
     abstract Start : 'state -> Task<StepResult<'state>>
@@ -64,9 +64,14 @@ type StepResult() =
     static member Empty() = { Expected = Expected []; ToSend = [] }
     static member Cancel() = { Expected = Cancel; ToSend = [] }
     static member Pipeline(correlationId, toSend, nextStep, timeToLive, timeoutStep) =
-        StepResult.pipeline timeToLive timeoutStep toSend correlationId nextStep
+        fun () ->
+            StepResult.pipeline timeToLive timeoutStep toSend correlationId nextStep
+        |> Task.Run
+
     static member Pipeline(correlationId, toSend, topic, nextStep, timeToLive, timeoutStep) =
-        StepResult.pipelineToTopic timeToLive timeoutStep toSend topic correlationId nextStep
+        fun () ->
+            StepResult.pipelineToTopic timeToLive timeoutStep toSend topic correlationId nextStep
+        |> Task.Run
 
 [<Extension>]
 type StepResultExtension() =

@@ -2,7 +2,7 @@
 module RouteMaster.Tests.Setup
 
 open System
-open RouteMaster.Types
+open RouteMaster
 open RouteMaster.State.PostgreSQL
 open RouteMaster.State.Memory
 open RouteMaster.Transport.EasyNetQ
